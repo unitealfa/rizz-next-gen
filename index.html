@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ma Page Web</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-family: 'Meie Script', cursive; 
+        }
+
+        video {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1; 
+        }
+
+        .container {
+            text-align: center;
+            z-index: 1; 
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+        }
+
+        .gif {
+            width: 250px; 
+            height: 250px; 
+            margin-bottom: 20px;
+            filter: brightness(200%);
+        }
+
+        .button-container {
+            display: flex;
+            flex-direction: column; /* Alignement vertical sur mobile */
+            align-items: center;
+            fill: brightness(110%);
+
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            margin: 5px;
+            transition: transform 5ms ease-in-out;
+            filter: brightness(120%);
+        }
+
+        .bn632-hover {
+            width: 160px;
+            font-size: 16px;
+            font-weight: 600;
+            color: #fff;
+            cursor: pointer;
+            margin: 20px;
+            height: 55px;
+            text-align: center;
+            border: none;
+            background-size: 300% 100%;
+            border-radius: 50px;
+            -o-transition: all .4s ease-in-out;
+            -webkit-transition: all .4s ease-in-out;
+            transition: all .4s ease-in-out;
+        }
+        
+        .bn632-hover:hover {
+            background-position: 100% 0;
+            -o-transition: all .4s ease-in-out;
+            -webkit-transition: all .4s ease-in-out;
+            transition: all .4s ease-in-out;
+        }
+        
+        .bn632-hover:focus {
+            outline: none;
+        }
+        
+        .bn632-hover.bn27 {
+            background-image: linear-gradient(
+                to right,
+                #e379a4,
+                #e8997c,
+                #ef6a9b,
+                #f7c472
+            );
+            box-shadow: 0 4px 15px 0 rgba(236, 116, 149, 0.75);
+        }
+
+        .message {
+            font-size: 27px;
+            color: rgb(0, 0, 0);
+            margin-bottom: 20px;
+        }
+
+        #instaButton {
+            margin-top: 20px;
+            display: none;
+        }
+
+
+        @media only screen and (max-width: 600px) {
+            .button-container {
+                flex-direction: row;
+            }
+        }
+    </style>
+</head>
+<body>
+    <video autoplay muted loop>
+        <source src="Design.mp4" type="video/mp4">
+    </video>
+
+    <div class="container">
+        <p class="message">You have a gorgeous smile,<br>you are the most beautiful<br>girl i've ever seen<br>wanna go out with me ?</p>
+        <img class="gif" src="tenor.gif" alt="GIF Description">
+        <div class="button-container">
+            <button id="bouton1" class="bn632-hover bn27" onclick="yesClicked()">YES</button>
+            <button id="bouton2" onclick="deplacerBouton()" class="bn632-hover bn27">NO</button>
+        </div>
+        <div id="instaButton">
+            <button onclick="redirectToInstagram()" class="bn632-hover bn27">Let's fix a date</button>
+        </div>
+    </div>
+
+    <script>
+        function deplacerBouton() {
+            var bouton2 = document.getElementById("bouton2");
+
+            var angle = Math.random() * 2 * Math.PI;
+            var rayon = 110;
+            var positionX = Math.cos(angle) * rayon;
+            var positionY = Math.sin(angle) * rayon  - 80;
+            var rayon2 = 110;
+            var positionX2 = Math.cos(angle) * rayon2 ;
+            var positionY2 = Math.sin(angle) * rayon2 - 200;
+            randpos = Math.random(0,5);
+                if (randpos > 3){
+                    bouton2.style.transform = `translate(${positionX}px, ${positionY}px)`;}
+                else{
+                    bouton2.style.transform = `translate(${positionX2}px, ${positionY2}px)`;}
+            
+                }
+            
+
+        function yesClicked() {
+            var container = document.querySelector('.container');
+            var message = document.querySelector('.message');
+            var gif = document.querySelector('.gif');
+            var bouton1 = document.getElementById('bouton1');
+            var bouton2 = document.getElementById('bouton2');
+            var instaButton = document.getElementById('instaButton');
+
+            message.textContent = "YEEEEEEEY!!!";
+            gif.src = "tenor2.gif";
+
+            bouton1.style.display = 'none';
+            bouton2.style.display = 'none';
+
+            instaButton.style.display = 'block';
+        }
+
+        function redirectToInstagram() {
+            window.location.href = "https://www.instagram.com/unite.alpha/";
+        }
+    </script>
+</body>
+</html>
